@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://res-console.cloudinary.com/valuers/thumbnails/v1/image/upload/v1644332538/R3JvdXBfNV94dWNxcTg=/grid/"
+            content="https://res.cloudinary.com/valuers/image/upload/v1644332538/Group_5_xucqq8.png"
           />
           <meta property="og:title" content="toGather" />
           <meta
