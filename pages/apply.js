@@ -102,41 +102,9 @@ function Apply() {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div>
       <Navbar />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            zIndex: "2",
-            position: "fixed",
-            marginTop: "90vh",
-            textAlign: "center",
-          }}
-        >
-          오늘 모임에{" "}
-          <span style={{ fontSize: "120%", color: "#FFB800" }}>{applyNum}</span>{" "}
-          명이 신청했어요.
-        </div>
-        <ContainedButton
-          onClick={onApplyClick}
-          style={{
-            borderRadius: "1rem",
-            maxWidth: "24rem",
-            width: "90%",
-            zIndex: "2",
-            position: "fixed",
-            marginTop: "93vh",
-          }}
-        >
-          규칙에 동의하고 신청하기
-        </ContainedButton>
-      </div>
+
       <div style={{ padding: "1rem 2rem" }}>
         <h2 style={{ paddingTop: "5rem", fontWeight: "400" }}>
           {moment(Date.now() + 31200000).format("YYYY년 MM월 DD일")}
@@ -190,6 +158,35 @@ function Apply() {
             * 또한, 그 즉시 서비스를 영구적으로 이용할 수 없습니다.
           </div>
         </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "15vh",
+        }}
+      >
+        <div
+          style={{
+            zIndex: "2",
+          }}
+        >
+          오늘 모임에{" "}
+          <span style={{ fontSize: "120%", color: "#FFB800" }}>{applyNum}</span>{" "}
+          명이 신청했어요.
+        </div>
+        <ContainedButton
+          onClick={onApplyClick}
+          style={{
+            borderRadius: "1rem",
+            maxWidth: "24rem",
+            width: "90%",
+            zIndex: "2",
+          }}
+        >
+          규칙에 동의하고 신청하기
+        </ContainedButton>
       </div>
     </div>
   );

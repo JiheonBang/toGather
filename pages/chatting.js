@@ -178,20 +178,18 @@ function Chatting() {
       });
     }
 
-    console.log(rawChattings);
-
     return (
       <>
         {groupChats.length !== 0 ? (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              maxWidth: "24rem",
-              width: "100%",
-            }}
-          >
-            <>
+          <>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                maxWidth: "24rem",
+                width: "100%",
+              }}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -225,31 +223,96 @@ function Chatting() {
                   </div>
                 ))}
               </Box>
-            </>
-          </div>
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              maxWidth: "24rem",
-              width: "95%",
-            }}
-          >
-            <h2 style={{ marginTop: "10vh", color: "#afafaf" }}>
-              아직 메시지가 없습니다.
-            </h2>
-            <h4
+            </div>
+            <Box
+              component="form"
+              noValidate
+              autoComplete="off"
+              onSubmit={chatSubmit}
               style={{
-                marginTop: "-1vh",
-                marginBottom: "-3vh",
-                color: "#afafaf",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                maxWidth: "24rem",
+                width: "93%",
+                backgroundColor: "white",
               }}
             >
-              메시지를 보내보세요!
-            </h4>
-          </div>
+              <TextField
+                required
+                name="chatContent"
+                id="chatContent"
+                value={newChat}
+                onChange={chatChange}
+                size="small"
+                fullWidth
+              />
+              <ContainedButton
+                type="submit"
+                sx={{ padding: "0.5rem 0", fontSize: "100%" }}
+              >
+                전송
+              </ContainedButton>
+            </Box>
+          </>
+        ) : (
+          <>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                maxWidth: "24rem",
+                width: "95%",
+              }}
+            >
+              <h2 style={{ marginTop: "10vh", color: "#afafaf" }}>
+                아직 메시지가 없습니다.
+              </h2>
+              <h4
+                style={{
+                  marginTop: "-1vh",
+                  marginBottom: "-3vh",
+                  color: "#afafaf",
+                }}
+              >
+                메시지를 보내보세요!
+              </h4>
+            </div>
+            <Box
+              component="form"
+              noValidate
+              autoComplete="off"
+              onSubmit={chatSubmit}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                maxWidth: "24rem",
+                width: "93%",
+                backgroundColor: "white",
+                marginTop: "50vh",
+              }}
+            >
+              <TextField
+                required
+                name="chatContent"
+                id="chatContent"
+                value={newChat}
+                onChange={chatChange}
+                size="small"
+                fullWidth
+              />
+              <ContainedButton
+                type="submit"
+                sx={{ padding: "0.5rem 0", fontSize: "100%" }}
+              >
+                전송
+              </ContainedButton>
+            </Box>
+          </>
         )}
       </>
     );
@@ -258,43 +321,9 @@ function Chatting() {
   return (
     <>
       <Navbar />
-      <Box
-        component="form"
-        noValidate
-        autoComplete="off"
-        onSubmit={chatSubmit}
-        style={{
-          position: "fixed",
-          marginTop: "93vh",
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          maxWidth: "24rem",
-          width: "93%",
-          backgroundColor: "white",
-        }}
-      >
-        <TextField
-          required
-          name="chatContent"
-          id="chatContent"
-          value={newChat}
-          onChange={chatChange}
-          size="small"
-          fullWidth
-        />
-        <ContainedButton
-          type="submit"
-          sx={{ padding: "0.5rem 0", fontSize: "100%" }}
-        >
-          전송
-        </ContainedButton>
-      </Box>
+
       <div
         style={{
-          height: "fit-content",
-          minHeight: "100vh",
           paddingBottom: "5rem",
         }}
       >

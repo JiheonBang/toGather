@@ -73,40 +73,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <div
-          style={{
-            zIndex: "2",
-            position: "fixed",
-            marginTop: "90vh",
-            textAlign: "center",
-          }}
-        >
-          지금까지{" "}
-          <span style={{ fontSize: "120%", color: "#FFB800" }}>{applyNum}</span>{" "}
-          명이 함께했어요.
-        </div>
-        <Link href="/main" passHref>
-          <ContainedButton
-            style={{
-              borderRadius: "1rem",
-              maxWidth: "24rem",
-              width: "90%",
-              zIndex: "2",
-              position: "fixed",
-              marginTop: "93vh",
-            }}
-          >
-            함께하러 가기
-          </ContainedButton>
-        </Link>
-      </div>
-      <div style={{ paddingBottom: "15vh" }}>
+
+      <div>
         <div
           style={{
             paddingTop: "5rem",
@@ -125,7 +93,7 @@ export default function Home() {
           style={{
             height: "45vh",
             backgroundColor: "#eeeeee",
-            margin: "2.5rem -1.5rem",
+            margin: "2.5rem -0.5rem",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
@@ -133,7 +101,7 @@ export default function Home() {
           }}
         >
           <button
-            style={{ border: "none", cursor: "pointer" }}
+            style={{ border: "none", cursor: "pointer", boxShadow: "none" }}
             onClick={leftReviewNum}
           >
             <ArrowBackIosNewIcon />
@@ -147,7 +115,7 @@ export default function Home() {
           >
             <div
               style={{
-                width: "20rem",
+                width: "16rem",
                 height: "33vh",
                 backgroundColor: "white",
                 padding: "2rem",
@@ -168,7 +136,7 @@ export default function Home() {
                     할 것도 없고 밥 먹기도 애매한데
                   </h4>
                   <h4 style={{ marginTop: "-1rem", fontWeight: "300" }}>
-                    사람들 만나서 시간 보내서 좋았어요!
+                    사람들이랑 시간 보내서 좋았어요!
                   </h4>
                 </>
               ) : reviewNum === 2 ? (
@@ -178,10 +146,10 @@ export default function Home() {
                     친구들 다 직장인 되고 나서
                   </h4>
                   <h4 style={{ marginTop: "-1rem", fontWeight: "300" }}>
-                    근처에 만나서 대화할 친구들 없어서
+                    근처에 만날 친구가 없어서
                   </h4>
                   <h4 style={{ marginTop: "-1rem", fontWeight: "300" }}>
-                    외로웠는데 오늘은 참 좋네요 기분이.
+                    외로웠는데 오늘은 참 좋네요.
                   </h4>
                 </>
               ) : reviewNum === 3 ? (
@@ -252,7 +220,10 @@ export default function Home() {
             </div>
           </div>
           <button
-            style={{ border: "none", cursor: "pointer" }}
+            style={{
+              border: "none",
+              cursor: "pointer",
+            }}
             onClick={rightReviewNum}
           >
             <ArrowForwardIosIcon />
@@ -330,6 +301,40 @@ export default function Home() {
               </h3>
             </div>
           </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "2rem",
+            paddingBottom: "1rem",
+          }}
+        >
+          <div
+            style={{
+              zIndex: "2",
+              textAlign: "center",
+            }}
+          >
+            지금까지{" "}
+            <span style={{ fontSize: "120%", color: "#FFB800" }}>
+              {applyNum}
+            </span>{" "}
+            명이 함께했어요.
+          </div>
+          <Link href="/main" passHref>
+            <ContainedButton
+              style={{
+                borderRadius: "1rem",
+                maxWidth: "24rem",
+                width: "90%",
+              }}
+            >
+              함께하러 가기
+            </ContainedButton>
+          </Link>
         </div>
       </div>
     </>

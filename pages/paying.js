@@ -50,29 +50,9 @@ function Paying() {
   return (
     <>
       <Navbar />
+
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <ContainedButton
-          style={{
-            borderRadius: "1rem",
-            maxWidth: "24rem",
-            width: "90%",
-            zIndex: "2",
-            position: "fixed",
-            marginTop: "93vh",
-          }}
-          onClick={onPaidClick}
-        >
-          입금 완료했습니다.
-        </ContainedButton>
-      </div>
-      <div
-        style={{
-          height: "100vh",
           paddingTop: "7rem",
           display: "flex",
           flexDirection: "column",
@@ -121,8 +101,21 @@ function Paying() {
             </span>
           </div>
           <div style={{ marginTop: "2vh" }}>위 이름으로 입금을 완료하시고,</div>
-          <div>아래 버튼을 클릭해 주시면 감사드리겠습니다.</div>
+          <div style={{ marginBottom: "5vh" }}>
+            아래 버튼을 클릭해 주시면 감사드리겠습니다.
+          </div>
         </div>
+
+        <ContainedButton
+          style={{
+            borderRadius: "1rem",
+            maxWidth: "24rem",
+            width: "90%",
+          }}
+          onClick={onPaidClick}
+        >
+          입금 완료했습니다.
+        </ContainedButton>
       </div>
     </>
   );

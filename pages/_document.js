@@ -35,7 +35,7 @@ export default class MyDocument extends Document {
             property="og:image"
             content="https://res.cloudinary.com/valuers/image/upload/v1644317739/toGather_c9iv3x.png"
           />
-          <meta property="og:title" content="Valuers" />
+          <meta property="og:title" content="toGather" />
           <meta
             property="og:description"
             content="오늘은 우리 함께해요, toGather"

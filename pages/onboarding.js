@@ -297,18 +297,15 @@ function Onboarding() {
                   />
                 </LocalizationProvider>
               </div>
-
-              <div
-                style={{
-                  position: "fixed",
-                  marginTop: "45vh",
-                  width: "20rem",
-                  display: "flex",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <ContainedButton onClick={onNextClick1}>다음</ContainedButton>
-              </div>
+            </div>
+            <div
+              style={{
+                margin: "10vh 0 10vh 0",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <ContainedButton onClick={onNextClick1}>다음</ContainedButton>
             </div>
           </>
         ) : onbNum === 2 ? (
@@ -360,26 +357,24 @@ function Onboarding() {
                 onChange={onChangeText}
                 sx={{ width: "20rem" }}
               />
-              <div
+            </div>
+            <div
+              style={{
+                marginTop: "20vh",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <TextButton
                 style={{
-                  position: "fixed",
-                  marginTop: "42vh",
-                  width: "20rem",
-                  display: "flex",
-                  justifyContent: "flex-end",
+                  width: "fit-content",
+                  color: "#AFAFAF",
                 }}
+                onClick={onPreviousClick}
               >
-                <TextButton
-                  style={{
-                    width: "fit-content",
-                    color: "#AFAFAF",
-                  }}
-                  onClick={onPreviousClick}
-                >
-                  이전
-                </TextButton>
-                <ContainedButton onClick={onNextClick2}>다음</ContainedButton>
-              </div>
+                이전
+              </TextButton>
+              <ContainedButton onClick={onNextClick2}>다음</ContainedButton>
             </div>
           </>
         ) : onbNum === 3 ? (
@@ -431,26 +426,24 @@ function Onboarding() {
                 onChange={onChangeText}
                 sx={{ width: "20rem" }}
               />
-              <div
+            </div>
+            <div
+              style={{
+                marginTop: "20vh",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <TextButton
                 style={{
-                  position: "fixed",
-                  marginTop: "42vh",
-                  width: "20rem",
-                  display: "flex",
-                  justifyContent: "flex-end",
+                  width: "fit-content",
+                  color: "#AFAFAF",
                 }}
+                onClick={onPreviousClick}
               >
-                <TextButton
-                  style={{
-                    width: "fit-content",
-                    color: "#AFAFAF",
-                  }}
-                  onClick={onPreviousClick}
-                >
-                  이전
-                </TextButton>
-                <ContainedButton onClick={onNextClick3}>다음</ContainedButton>
-              </div>
+                이전
+              </TextButton>
+              <ContainedButton onClick={onNextClick3}>다음</ContainedButton>
             </div>
           </>
         ) : onbNum === 4 ? (
@@ -502,26 +495,24 @@ function Onboarding() {
                 onChange={onChangeText}
                 sx={{ width: "20rem" }}
               />
-              <div
+            </div>
+            <div
+              style={{
+                marginTop: "10vh",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <TextButton
                 style={{
-                  position: "fixed",
-                  marginTop: "45vh",
-                  width: "20rem",
-                  display: "flex",
-                  justifyContent: "flex-end",
+                  width: "fit-content",
+                  color: "#AFAFAF",
                 }}
+                onClick={onPreviousClick}
               >
-                <TextButton
-                  style={{
-                    width: "fit-content",
-                    color: "#AFAFAF",
-                  }}
-                  onClick={onPreviousClick}
-                >
-                  이전
-                </TextButton>
-                <ContainedButton onClick={onNextClick4}>다음</ContainedButton>
-              </div>
+                이전
+              </TextButton>
+              <ContainedButton onClick={onNextClick4}>다음</ContainedButton>
             </div>
           </>
         ) : onbNum === 5 ? (
@@ -573,26 +564,24 @@ function Onboarding() {
                 onChange={onChangeText}
                 sx={{ width: "20rem" }}
               />
-              <div
+            </div>
+            <div
+              style={{
+                marginTop: "10vh",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <TextButton
                 style={{
-                  position: "fixed",
-                  marginTop: "45vh",
-                  width: "20rem",
-                  display: "flex",
-                  justifyContent: "flex-end",
+                  width: "fit-content",
+                  color: "#AFAFAF",
                 }}
+                onClick={onPreviousClick}
               >
-                <TextButton
-                  style={{
-                    width: "fit-content",
-                    color: "#AFAFAF",
-                  }}
-                  onClick={onPreviousClick}
-                >
-                  이전
-                </TextButton>
-                <ContainedButton onClick={onFinishClick}>완료</ContainedButton>
-              </div>
+                이전
+              </TextButton>
+              <ContainedButton onClick={onFinishClick}>완료</ContainedButton>
             </div>
           </>
         ) : null}

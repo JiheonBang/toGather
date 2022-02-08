@@ -21,42 +21,7 @@ function Waiting() {
   return (
     <>
       <Navbar />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <OutlinedButton
-          style={{
-            borderRadius: "1rem",
-            maxWidth: "24rem",
-            width: "90%",
-            zIndex: "2",
-            position: "fixed",
-            marginTop: "87vh",
-            border: "1px solid #afafaf",
-            color: "#afafaf",
-            fontSize: "100%",
-          }}
-          href="/paying"
-        >
-          아직 입금을 안하셨나요?
-        </OutlinedButton>
-        <ContainedButton
-          onClick={onResultClick}
-          style={{
-            borderRadius: "1rem",
-            maxWidth: "24rem",
-            width: "90%",
-            zIndex: "2",
-            position: "fixed",
-            marginTop: "93vh",
-          }}
-        >
-          매칭 결과 확인하기
-        </ContainedButton>
-      </div>
+
       <div>
         <div style={{ padding: "1rem 2rem" }}>
           <h2 style={{ paddingTop: "5rem", fontWeight: "400" }}>
@@ -89,6 +54,38 @@ function Waiting() {
           <h3 style={{ fontWeight: "400", marginTop: "-0.5rem" }}>
             확인하실 수 있습니다.
           </h3>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <OutlinedButton
+            style={{
+              borderRadius: "1rem",
+              maxWidth: "24rem",
+              width: "90%",
+              border: "1px solid #afafaf",
+              color: "#afafaf",
+              fontSize: "100%",
+            }}
+            href="/paying"
+          >
+            아직 입금을 안하셨나요?
+          </OutlinedButton>
+          <ContainedButton
+            onClick={onResultClick}
+            style={{
+              borderRadius: "1rem",
+              maxWidth: "24rem",
+              width: "90%",
+              marginTop: "0.5rem",
+            }}
+          >
+            매칭 결과 확인하기
+          </ContainedButton>
         </div>
       </div>
     </>
