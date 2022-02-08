@@ -115,7 +115,7 @@ export default function Home() {
           >
             <div
               style={{
-                width: "16rem",
+                width: "17rem",
                 height: "33vh",
                 backgroundColor: "white",
                 padding: "2rem",
@@ -136,7 +136,7 @@ export default function Home() {
                     할 것도 없고 밥 먹기도 애매한데
                   </h4>
                   <h4 style={{ marginTop: "-1rem", fontWeight: "300" }}>
-                    사람들이랑 시간 보내서 좋았어요!
+                    사람들이랑 함께 해서 좋았어요!
                   </h4>
                 </>
               ) : reviewNum === 2 ? (
@@ -169,10 +169,10 @@ export default function Home() {
                 <>
                   <h3>중고 새내기 / 대학생</h3>
                   <h4 style={{ marginTop: "1rem", fontWeight: "300" }}>
-                    타지로 대학 왔더니 코로나 터져서
+                    대학 왔더니 코로나 터져서
                   </h4>
                   <h4 style={{ marginTop: "-1rem", fontWeight: "300" }}>
-                    연락하고 지내는 친구 하나 없어서
+                    연락하는 친구 하나 없어서
                   </h4>
                   <h4 style={{ marginTop: "-1rem", fontWeight: "300" }}>
                     힘들고 슬펐는데 감사합니다!

@@ -72,32 +72,9 @@ function Matching() {
       <Navbar />
       <div
         style={{
-          height: "fit-content",
-          minHeight: "100vh",
           paddingBottom: "5rem",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <ContainedButton
-            href="/chatting"
-            style={{
-              borderRadius: "1rem",
-              maxWidth: "24rem",
-              width: "90%",
-              zIndex: "2",
-              position: "fixed",
-              marginTop: "93vh",
-            }}
-          >
-            채팅방 입장하기
-          </ContainedButton>
-        </div>
         <div style={{ padding: "1rem 2rem" }}>
           <h2 style={{ paddingTop: "5rem", fontWeight: "400" }}>
             {moment(Date.now()).format("YYYY년 MM월 DD일")}
@@ -189,6 +166,25 @@ function Matching() {
                 </div>
               </div>
             ))}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <ContainedButton
+            href="/chatting"
+            style={{
+              borderRadius: "1rem",
+              maxWidth: "24rem",
+              width: "90%",
+              zIndex: "2",
+            }}
+          >
+            채팅방 입장하기
+          </ContainedButton>
         </div>
       </div>
     </>

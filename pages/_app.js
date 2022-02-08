@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }) {
           bgcolor: "white",
           height: "fit-content",
           minHeight: "100vh",
+          paddingBottom: "3vh",
         }}
       >
         <Component {...pageProps} />

@@ -107,7 +107,7 @@ function Login() {
             padding: "1rem",
             cursor: "pointer",
             backgroundColor: "#ffffff",
-            border: "1px solid #e1e1e1",
+            border: "1.5px solid #e1e1e1",
             borderRadius: "10px",
             marginBottom: "1rem",
           }}

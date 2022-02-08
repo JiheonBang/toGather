@@ -1,31 +1,66 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import moment from "moment";
 
+import { authService, dbService } from "../firebase/initFirebase";
 import Navbar from "../components/navbar";
 import { ContainedButton, OutlinedButton } from "../components/styledButton";
 import waiting from "../public/waiting.png";
 
 function Waiting() {
   const router = useRouter();
+
+  const [currentUser, setCurrentUser] = useState();
+  const [currentUserInfo, setCurrentUserInfo] = useState();
+
+  authService.onAuthStateChanged((user) => {
+    if (user) {
+      setCurrentUser(user);
+    }
+  });
+
+  useEffect(() => {
+    if (currentUser) {
+      dbService.collection("userApply").onSnapshot((snapshot) => {
+        snapshot.docs.map((doc) => {
+          if (doc.data().userId === currentUser.uid) {
+            setCurrentUserInfo(doc.data());
+          }
+        });
+      });
+    }
+  }, [currentUser]);
+
   const onResultClick = () => {
     const currentTime = moment(Date.now()).format("HHmm");
-    if (currentTime >= 1600) {
-      router.push("/matching");
-    } else {
-      alert("오후 4시 이후에 확인하실 수 있습니다.");
+    if (currentUserInfo) {
+      if (currentUserInfo.isPaid) {
+        if (currentTime >= 1600) {
+          router.push("/matching");
+        } else {
+          alert("오후 4시 이후에 확인하실 수 있습니다.");
+        }
+      } else {
+        if (currentTime >= 1600) {
+          alert("오늘 매칭은 종료되었습니다.");
+          router.push("/main");
+        } else {
+          alert(
+            "입금 확인 중입니다.\n아직 입금하지 않으셨다면,\n입금을 부탁드립니다."
+          );
+        }
+      }
     }
   };
 
   return (
     <>
       <Navbar />
-
       <div>
         <div style={{ padding: "1rem 2rem" }}>
           <h2 style={{ paddingTop: "5rem", fontWeight: "400" }}>
-            {moment(Date.now() + 28800000).format("YYYY년 MM월 DD일")}
+            {moment(Date.now() + 24000000).format("YYYY년 MM월 DD일")}
           </h2>
           <div
             style={{
