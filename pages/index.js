@@ -9,6 +9,7 @@ import { ContainedButton } from "../components/styledButton";
 import main from "../public/index_main.png";
 import sub1 from "../public/index_sub_1.png";
 import sub2 from "../public/index_sub_2.png";
+import sub3 from "../public/index_sub_3.png";
 
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -290,12 +291,35 @@ export default function Home() {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              marginTop: "2rem",
+              marginTop: "1rem",
+            }}
+          >
+            <div style={{ marginLeft: "-1.5rem" }}>
+              <Image
+                src={sub2}
+                alt="index_sub_2"
+                width="120rem"
+                height="130rem"
+              />
+            </div>
+            <div style={{ marginLeft: "2rem" }}>
+              <h3 style={{ fontWeight: "500" }}>나와 잘 맞는 사람과</h3>
+              <h3 style={{ marginTop: "-0.7rem", fontWeight: "500" }}>
+                자동으로 매칭돼요.
+              </h3>
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: "1rem",
             }}
           >
             <Image
-              src={sub2}
-              alt="index_sub_2"
+              src={sub3}
+              alt="index_sub_3"
               width="100rem"
               height="110rem"
             />

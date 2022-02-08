@@ -126,6 +126,7 @@ function Matching() {
           {groupMembersInfo &&
             groupMembersInfo.map((member) => (
               <div
+                key={member.useId}
                 style={{
                   backgroundColor: "#F5F6FF",
                   width: "40vh",
