@@ -77,14 +77,14 @@ function Login() {
     <>
       <div
         style={{
-          padding: "1rem 1.5rem",
+          padding: "1.5rem 0.5rem",
           position: "fixed",
           zIndex: 1,
           cursor: "pointer",
         }}
       >
         <Link href="/" passHref>
-          <Image width="125px" height="30px" src={logobox} alt="logobox" />
+          <Image width="120px" height="35px" src={logobox} alt="logobox" />
         </Link>
       </div>
       <div

@@ -52,9 +52,9 @@ export default function Navbar() {
         backgroundColor: "white",
       }}
     >
-      <div style={{ cursor: "pointer" }}>
+      <div style={{ cursor: "pointer", paddingTop: "1rem" }}>
         <Link href="/" passHref>
-          <Image width="125px" height="30px" src={logobox} alt="logobox" />
+          <Image width="120px" height="35px" src={logobox} alt="logobox" />
         </Link>
       </div>
       {currentUser ? (

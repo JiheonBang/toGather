@@ -19,7 +19,7 @@ function Apply() {
       .collection("userApply")
       .get()
       .then((snap) => {
-        setApplyNum(applyNum + 3 * snap.size);
+        setApplyNum(applyNum + snap.size);
       });
   }, []);
 

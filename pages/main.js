@@ -18,7 +18,7 @@ function Main() {
       .collection("userApply")
       .get()
       .then((snap) => {
-        setApplyNum(applyNum + 3 * snap.size);
+        setApplyNum(applyNum + snap.size);
       });
   }, []);
 
@@ -78,7 +78,7 @@ function Main() {
             }}
           />
 
-          <h3
+          <h4
             style={{
               marginTop: "3rem",
               fontWeight: "300",
@@ -98,9 +98,9 @@ function Main() {
               </span>
               이 부과됩니다.
             </li>
-          </h3>
+          </h4>
 
-          <h3
+          <h4
             style={{
               marginTop: "1rem",
               fontWeight: "300",
@@ -119,12 +119,9 @@ function Main() {
               </span>
               까지 당일 신청이 가능하며, 3시 이후로는 다음 날로 신청됩니다.
             </li>
-
-            <div style={{ marginLeft: "1.6rem" }}>
-              (위 날짜를 확인해 주세요.)
-            </div>
-          </h3>
-          <h3
+            <div>(위 날짜를 확인해 주세요.)</div>
+          </h4>
+          <h4
             style={{
               marginTop: "1rem",
               fontWeight: "300",
@@ -144,8 +141,8 @@ function Main() {
               </span>{" "}
               지역에서만 서비스를 이용하실 수 있습니다.
             </li>
-          </h3>
-          <h3
+          </h4>
+          <h4
             style={{
               marginTop: "1rem",
               fontWeight: "300",
@@ -166,8 +163,8 @@ function Main() {
               으로 진행되며, 참가자 매칭은 작성해 주신 프로필에 기반하여
               진행됩니다.
             </li>
-          </h3>
-          <h3
+          </h4>
+          <h4
             style={{
               marginTop: "1rem",
               fontWeight: "300",
@@ -187,8 +184,8 @@ function Main() {
               </span>
               으로 매칭됩니다.
             </li>
-          </h3>
-          <h3
+          </h4>
+          <h4
             style={{
               marginTop: "1rem",
               fontWeight: "300",
@@ -208,7 +205,7 @@ function Main() {
               </span>
               에 공개되며, 채팅방을 생성해 드립니다.
             </li>
-          </h3>
+          </h4>
         </div>
         <div
           style={{

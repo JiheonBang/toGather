@@ -33,16 +33,22 @@ function Waiting() {
   }, [currentUser]);
 
   const onResultClick = () => {
-    const currentTime = moment(Date.now()).format("HHmm");
+    const matchingTime = moment(Date.now() + 31200000).format("YYMMDD1600");
+    const currentTime = moment(Date.now()).format("YYMMDDHHmm");
+
     if (currentUserInfo) {
       if (currentUserInfo.isPaid) {
-        if (currentTime >= 1600) {
+        if (currentTime >= matchingTime) {
           router.push("/matching");
         } else {
-          alert("오후 4시 이후에 확인하실 수 있습니다.");
+          alert(
+            `${moment(Date.now() + 31200000).format(
+              "MM월 DD일"
+            )} 오후 4시 이후에 확인하실 수 있습니다.`
+          );
         }
       } else {
-        if (currentTime >= 1600) {
+        if (currentTime >= matchingTime) {
           alert("오늘 매칭은 종료되었습니다.");
           router.push("/main");
         } else {
