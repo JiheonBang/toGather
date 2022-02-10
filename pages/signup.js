@@ -64,7 +64,7 @@ function Signup() {
           .then(() => {
             fetch(process.env.NEXT_PUBLIC_SLACK_CONFIG_SIGNUP, {
               method: "POST",
-              body: JSON.stringify({ text: "User is Signed Up!" }),
+              body: JSON.stringify({ text: "회원가입을 했습니다." }),
             });
           })
           .then(() => {

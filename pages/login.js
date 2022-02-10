@@ -70,9 +70,17 @@ function Login() {
   const socialClick = async (event) => {
     event.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider();
-    await authService.signInWithPopup(provider).then(() => {
-      router.push("/main");
-    });
+    await authService
+      .signInWithPopup(provider)
+      .then(() => {
+        fetch(process.env.NEXT_PUBLIC_SLACK_CONFIG_SIGNUP, {
+          method: "POST",
+          body: JSON.stringify({ text: "로그인을 했습니다." }),
+        });
+      })
+      .then(() => {
+        router.push("/main");
+      });
   };
 
   return (

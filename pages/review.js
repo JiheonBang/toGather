@@ -130,8 +130,8 @@ function Review() {
             .collection("userReview")
             .add({
               reviewContent: userReview.reviewContent,
-              member1: groupMembersInfo[0].userNickName,
-              member2: groupMembersInfo[1].userNickName,
+              member1: groupMembersInfo[0].userId,
+              member2: groupMembersInfo[1].userId,
               review1: userReview.review1,
               review2: userReview.review2,
               etc: userReview.etc,
@@ -141,7 +141,7 @@ function Review() {
               createdAt: Date.now(),
             })
             .then(() => {
-              fetch(process.env.NEXT_PUBLIC_SLACK_CONFIG_APPLY, {
+              fetch(process.env.NEXT_PUBLIC_SLACK_CONFIG_REVIEW, {
                 method: "POST",
                 body: JSON.stringify({
                   text: `[${moment(Date.now()).format(
@@ -161,9 +161,9 @@ function Review() {
             .collection("userReview")
             .add({
               reviewContent: userReview.reviewContent,
-              member1: groupMembersInfo[0].userNickName,
-              member2: groupMembersInfo[1].userNickName,
-              member3: groupMembersInfo[2].userNickName,
+              member1: groupMembersInfo[0].userId,
+              member2: groupMembersInfo[1].userId,
+              member3: groupMembersInfo[2].userId,
               review1: userReview.review1,
               review2: userReview.review2,
               review3: userReview.review3,
@@ -174,7 +174,7 @@ function Review() {
               createdAt: Date.now(),
             })
             .then(() => {
-              fetch(process.env.NEXT_PUBLIC_SLACK_CONFIG_APPLY, {
+              fetch(process.env.NEXT_PUBLIC_SLACK_CONFIG_REVIEW, {
                 method: "POST",
                 body: JSON.stringify({
                   text: `[${moment(Date.now()).format(

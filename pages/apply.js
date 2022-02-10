@@ -13,31 +13,27 @@ function Apply() {
   const [isOnboarding, setIsOnboarding] = useState(false);
   const [applyingName, setApplyingName] = useState();
   const [isDuplicated, setIsDuplicated] = useState(false);
-  const [dDayApply, setDDayApply] = useState();
-
-  useEffect(() => {
-    let applyDB = [];
-    dbService.collection("userApply").onSnapshot((snapshot) => {
-      snapshot.docs.map((doc) => {
-        if (
-          moment(Date.now() + 31200000).format("YY/MM/DD") ===
-          doc.data().meetingDay
-        ) {
-          applyDB.push(doc.data());
-        }
-      });
-    });
-    setDDayApply(applyDB);
-  }, []);
+  const [dDayApply, setDDayApply] = useState(0);
 
   authService.onAuthStateChanged((user) => {
     if (user) {
       setCurrentUser(user);
-    } else {
-      alert("로그인이 필요한 페이지입니다.");
-      router.push("/main");
     }
   });
+
+  const getApplyNum = async () => {
+    let applyDB = 0;
+    const a = await dbService.collection("userApply").get();
+    a.docs.map((doc) => {
+      if (
+        moment(Date.now() + 31200000).format("YY/MM/DD") ===
+        doc.data().meetingDay
+      ) {
+        applyDB = applyDB + 1;
+      }
+    });
+    setDDayApply(applyDB);
+  };
 
   const checkOnboarding = async () => {
     if (currentUser) {
@@ -77,6 +73,7 @@ function Apply() {
   };
 
   useEffect(() => {
+    getApplyNum();
     checkOnboarding();
     getApplyingName();
     duplicationTest();
@@ -135,6 +132,8 @@ function Apply() {
       }
     }
   };
+
+  console.log(dDayApply);
 
   return (
     <div>
@@ -212,7 +211,7 @@ function Apply() {
         >
           오늘 모임에{" "}
           <span style={{ fontSize: "120%", color: "#FFB800" }}>
-            {dDayApply && 1 + dDayApply.length}
+            {dDayApply && 6 + dDayApply}
           </span>{" "}
           명이 신청했어요.
         </div>
