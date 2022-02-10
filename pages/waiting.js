@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import moment from "moment";
@@ -62,6 +63,9 @@ function Waiting() {
 
   return (
     <>
+      <Head>
+        <title>Waiting | toGather</title>
+      </Head>
       <Navbar />
       <div>
         <div style={{ padding: "1rem 2rem" }}>

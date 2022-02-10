@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import moment from "moment";
 
@@ -10,17 +11,23 @@ function Apply() {
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState();
   const [isOnboarding, setIsOnboarding] = useState(false);
-  const [payingName, setPayingName] = useState();
-
-  const [applyNum, setApplyNum] = useState(1);
+  const [applyingName, setApplyingName] = useState();
+  const [isDuplicated, setIsDuplicated] = useState(false);
+  const [dDayApply, setDDayApply] = useState();
 
   useEffect(() => {
-    dbService
-      .collection("userApply")
-      .get()
-      .then((snap) => {
-        setApplyNum(applyNum + snap.size);
+    let applyDB = [];
+    dbService.collection("userApply").onSnapshot((snapshot) => {
+      snapshot.docs.map((doc) => {
+        if (
+          moment(Date.now() + 31200000).format("YY/MM/DD") ===
+          doc.data().meetingDay
+        ) {
+          applyDB.push(doc.data());
+        }
       });
+    });
+    setDDayApply(applyDB);
   }, []);
 
   authService.onAuthStateChanged((user) => {
@@ -42,50 +49,78 @@ function Apply() {
     }
   };
 
-  const getPayingName = async () => {
+  const getApplyingName = async () => {
     if (currentUser) {
       const userData = await dbService
         .collection("userInfo")
         .doc(currentUser.uid)
         .get();
-      userData.exists && setPayingName(userData.data().userName);
+      userData.exists && setApplyingName(userData.data().userName);
+    }
+  };
+
+  const duplicationTest = async () => {
+    if (currentUser) {
+      dbService.collection("userApply").onSnapshot((snapshot) => {
+        snapshot.docs.map((doc) => {
+          if (
+            moment(Date.now() + 31200000).format("YY/MM/DD") ===
+            doc.data().meetingDay
+          ) {
+            if (currentUser.uid === doc.data().userId) {
+              setIsDuplicated(true);
+            }
+          }
+        });
+      });
     }
   };
 
   useEffect(() => {
     checkOnboarding();
-    getPayingName();
+    getApplyingName();
+    duplicationTest();
   }, [currentUser]);
 
   const onApplyClick = () => {
     if (currentUser) {
       if (isOnboarding) {
-        const ok = window.confirm(
-          `${moment(Date.now() + 31200000).format(
-            "YYYY년 MM월 DD일"
-          )} 모임에 신청하시겠습니까?`
-        );
-        if (ok) {
-          dbService
-            .collection("userApply")
-            .add({
-              userId: currentUser.uid,
-              applyTime: moment(Date.now()).format("MM/DD HH:mm"),
-              meetingDay: moment(Date.now() + 31200000).format("YY/MM/DD"),
-              isPaid: false,
-              groupNum: null,
-            })
-            .then(() => {
-              fetch(process.env.NEXT_PUBLIC_SLACK_CONFIG_APPLY, {
-                method: "POST",
-                body: JSON.stringify({
-                  text: `[${moment(Date.now()).format(
-                    "YYMMDD HH:mm"
-                  )}] ${payingName} 님이 신청하셨습니다.`,
-                }),
-              });
-            })
-            .then(router.push("/paying"));
+        if (!isDuplicated) {
+          const ok = window.confirm(
+            `${moment(Date.now() + 31200000).format(
+              "YYYY년 MM월 DD일"
+            )} 모임에 신청하시겠습니까?`
+          );
+          if (ok) {
+            dbService
+              .collection("userApply")
+              .add({
+                userId: currentUser.uid,
+                applyTime: Date.now(),
+                meetingDay: moment(Date.now() + 31200000).format("YY/MM/DD"),
+                isPaid: false,
+                isReviewed: false,
+                groupNum: null,
+              })
+              .then(() => {
+                fetch(process.env.NEXT_PUBLIC_SLACK_CONFIG_APPLY, {
+                  method: "POST",
+                  body: JSON.stringify({
+                    text: `[${moment(Date.now()).format(
+                      "YYMMDD HH:mm"
+                    )}] ${applyingName} 님이 신청하셨습니다.`,
+                  }),
+                });
+              })
+              .then(router.push("/paying"));
+          }
+        } else {
+          alert(
+            `${moment(Date.now() + 31200000).format(
+              "YYYY년 MM월 DD일"
+            )} 모임에 이미 신청하셨습니다.`
+          );
+          router.push("/paying");
         }
       } else {
         const ok = window.confirm("내 정보를 입력하시겠습니까?");
@@ -103,6 +138,9 @@ function Apply() {
 
   return (
     <div>
+      <Head>
+        <title>Apply | toGather</title>
+      </Head>
       <Navbar />
 
       <div style={{ padding: "1rem 2rem" }}>
@@ -173,7 +211,9 @@ function Apply() {
           }}
         >
           오늘 모임에{" "}
-          <span style={{ fontSize: "120%", color: "#FFB800" }}>{applyNum}</span>{" "}
+          <span style={{ fontSize: "120%", color: "#FFB800" }}>
+            {dDayApply && 1 + dDayApply.length}
+          </span>{" "}
           명이 신청했어요.
         </div>
         <ContainedButton

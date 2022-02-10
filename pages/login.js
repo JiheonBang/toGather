@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import firebase, { authService, dbService } from "../firebase/initFirebase";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+
+import firebase, { authService, dbService } from "../firebase/initFirebase";
 import { ContainedButton, TextButton } from "../components/styledButton";
+import googleLogo from "../public/google_logo_2_littledeep.png";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -13,7 +16,6 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import logobox from "../public/logo.png";
 import Chip from "@mui/material/Chip";
-import googleLogo from "../public/google_logo_2_littledeep.png";
 
 function Login() {
   const router = useRouter();
@@ -75,6 +77,9 @@ function Login() {
 
   return (
     <>
+      <Head>
+        <title>Login | toGather</title>
+      </Head>
       <div
         style={{
           padding: "1.5rem 0.5rem",

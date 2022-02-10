@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import moment from "moment";
@@ -11,15 +12,21 @@ function Main() {
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState();
   const [isOnboarding, setIsOnboarding] = useState(false);
-  const [applyNum, setApplyNum] = useState(1);
+  const [dDayApply, setDDayApply] = useState();
 
   useEffect(() => {
-    dbService
-      .collection("userApply")
-      .get()
-      .then((snap) => {
-        setApplyNum(applyNum + snap.size);
+    let applyDB = [];
+    dbService.collection("userApply").onSnapshot((snapshot) => {
+      snapshot.docs.map((doc) => {
+        if (
+          moment(Date.now() + 31200000).format("YY/MM/DD") ===
+          doc.data().meetingDay
+        ) {
+          applyDB.push(doc.data());
+        }
       });
+    });
+    setDDayApply(applyDB);
   }, []);
 
   authService.onAuthStateChanged((user) => {
@@ -62,6 +69,9 @@ function Main() {
 
   return (
     <>
+      <Head>
+        <title>Main | toGather</title>
+      </Head>
       <Navbar />
       <div>
         <div style={{ padding: "1rem 2rem" }}>
@@ -86,7 +96,6 @@ function Main() {
             }}
           >
             <li>
-              모든 모임은 당일 저녁이며, 매칭 수수료{" "}
               <span
                 style={{
                   fontSize: "110%",
@@ -94,12 +103,32 @@ function Main() {
                   fontWeight: "600",
                 }}
               >
-                9,900원
+                첫 1회 이용은 무료
               </span>
-              이 부과됩니다.
+              입니다.
             </li>
           </h4>
-
+          <h4
+            style={{
+              marginTop: "1rem",
+              fontWeight: "300",
+              lineHeight: "1.6rem",
+            }}
+          >
+            <li>
+              이후에는 6,600원의 매칭 수수료가 있으며, 직전 모임 {"  "}
+              <span
+                style={{
+                  fontSize: "110%",
+                  color: "#FFB800",
+                  fontWeight: "600",
+                }}
+              >
+                리뷰 작성 시 3,300원이 할인
+              </span>
+              됩니다.
+            </li>
+          </h4>
           <h4
             style={{
               marginTop: "1rem",
@@ -129,7 +158,17 @@ function Main() {
             }}
           >
             <li>
-              현재는{" "}
+              모든 모임은{" "}
+              <span
+                style={{
+                  fontSize: "110%",
+                  color: "#FFB800",
+                  fontWeight: "600",
+                }}
+              >
+                당일 저녁
+              </span>
+              이며, 현재는{" "}
               <span
                 style={{
                   fontSize: "110%",
@@ -206,13 +245,34 @@ function Main() {
               에 공개되며, 채팅방을 생성해 드립니다.
             </li>
           </h4>
+          <h4
+            style={{
+              marginTop: "1rem",
+              fontWeight: "300",
+              lineHeight: "1.6rem",
+            }}
+          >
+            <li>
+              해당 채팅방에서{"  "}
+              <span
+                style={{
+                  fontSize: "110%",
+                  color: "#FFB800",
+                  fontWeight: "600",
+                }}
+              >
+                만남 장소, 시간
+              </span>
+              에 대한 대화를 나누실 수 있습니다.
+            </li>
+          </h4>
         </div>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            marginTop: "5vh",
+            marginTop: "3vh",
           }}
         >
           <div
@@ -223,7 +283,7 @@ function Main() {
           >
             오늘 모임에{" "}
             <span style={{ fontSize: "120%", color: "#FFB800" }}>
-              {applyNum}
+              {dDayApply && 1 + dDayApply.length}{" "}
             </span>{" "}
             명이 신청했어요.
           </div>

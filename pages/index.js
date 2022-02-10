@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
@@ -72,8 +73,10 @@ export default function Home() {
   );
   return (
     <>
+      <Head>
+        <title>toGather</title>
+      </Head>
       <Navbar />
-
       <div>
         <div
           style={{
@@ -122,6 +125,7 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
+                borderRadius: "10px",
                 boxShadow:
                   "0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1)",
               }}

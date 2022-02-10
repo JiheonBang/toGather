@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -109,19 +110,22 @@ function Profile({ givenLink }) {
 
   return (
     <>
+      <Head>
+        <title>Profile | toGather</title>
+      </Head>
       <div
         style={{
-          padding: "1rem 1.5rem",
           position: "fixed",
           zIndex: 3,
           cursor: "pointer",
           backgroundColor: "white",
           width: "93%",
           maxWidth: "24rem",
+          padding: "1.5rem 0.5rem",
         }}
       >
         <Link href="/" passHref>
-          <Image width="125px" height="30px" src={logobox} alt="logobox" />
+          <Image width="120px" height="35px" src={logobox} alt="logobox" />
         </Link>
       </div>
       <div style={{ paddingTop: "5rem" }}>

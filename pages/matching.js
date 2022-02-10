@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import moment from "moment";
 
 import { authService, dbService } from "../firebase/initFirebase";
@@ -65,10 +66,11 @@ function Matching() {
     }
   }, [groupMembers]);
 
-  console.log(groupMembersInfo);
-
   return (
     <>
+      <Head>
+        <title>Matching | toGather</title>
+      </Head>
       <Navbar />
       <div
         style={{
