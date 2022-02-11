@@ -73,10 +73,13 @@ function Paying() {
   };
 
   useEffect(() => {
-    if (userGatherings) {
+    if (userGatherings && userGatherings.length > 0) {
+      console.log(1);
       if (userGatherings[0].isReviewed) {
+        console.log(2);
         setDiscountStatus("reviewed");
       } else {
+        console.log(3);
         setDiscountStatus("not reviewed");
       }
     } else {
